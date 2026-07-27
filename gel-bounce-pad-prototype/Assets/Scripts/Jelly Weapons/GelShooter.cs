@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using StarterAssets;
 
 public class GelShooter : MonoBehaviour
@@ -6,13 +6,19 @@ public class GelShooter : MonoBehaviour
     [Header("References")]
     [SerializeField] private Camera playerCamera;
     [SerializeField] private GameObject jellyPrefab;
+    [SerializeField] private ParticleSystem jellyMuzzleFlash;
 
     [Header("Raycast Settings")]
     [SerializeField] private float shootDistance = Mathf.Infinity;
     [SerializeField] private LayerMask gelSurfaceLayer;
 
+    [Header("Animation References")]
+    [SerializeField] private Animator Animator;
+
     private GameObject currentJelly;
     private StarterAssetsInputs inputs;
+
+    const string SHOOT_STRING = "Shoot";
 
     private void Awake()
     {
@@ -39,7 +45,11 @@ public class GelShooter : MonoBehaviour
 
     private void Shoot()
     {
-        Ray ray = new Ray(playerCamera.transform.position,playerCamera.transform.forward);
+        jellyMuzzleFlash.Play();
+
+        Animator.Play(SHOOT_STRING, 0, 0f);
+
+       Ray ray = new Ray(playerCamera.transform.position,playerCamera.transform.forward);
 
         if (Physics.Raycast(ray,out RaycastHit hit,shootDistance,gelSurfaceLayer))
         {
