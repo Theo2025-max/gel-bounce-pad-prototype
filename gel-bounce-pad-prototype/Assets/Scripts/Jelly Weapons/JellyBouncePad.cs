@@ -1,5 +1,4 @@
 using UnityEngine;
-using StarterAssets;
 
 public class JellyBouncePad : MonoBehaviour
 {
@@ -7,15 +6,15 @@ public class JellyBouncePad : MonoBehaviour
     [SerializeField]
     private float bounceHeight = 8f;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        FirstPersonController player = other.GetComponent<FirstPersonController>();
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    FirstPersonController player = other.GetComponent<FirstPersonController>();
 
-        if (player == null)
-            return;
+    //    if (player == null)
+    //        return;
 
-        player.Launch(bounceHeight);
+    //    player.Launch(bounceHeight);
 
-        Debug.Log("Player bounced!");
-    }
+    //    Debug.Log("Player bounced!");
+    //}
 }

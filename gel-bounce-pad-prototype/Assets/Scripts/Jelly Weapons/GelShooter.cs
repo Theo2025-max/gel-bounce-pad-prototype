@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using StarterAssets;
 
 public class GelShooter : MonoBehaviour
 {
@@ -16,31 +15,27 @@ public class GelShooter : MonoBehaviour
     [SerializeField] private Animator Animator;
 
     private GameObject currentJelly;
-    private StarterAssetsInputs inputs;
+    PlayerControls controls;
 
     const string SHOOT_STRING = "Shoot";
 
     private void Awake()
     {
-        inputs = GetComponentInParent<StarterAssetsInputs>();
+        controls = new PlayerControls();
 
         if (playerCamera == null)
         {
             playerCamera = Camera.main;
         }
+        controls.Player.Shoot.performed += ctx =>
+        {
+            Shoot();
+        };
     }
 
     private void Update()
     {
-        if (!inputs.shoot)
-        {
-            return;
-        }
-
-        Shoot();
-
-        // Prevent multiple shots from one click.
-        inputs.shoot = false;
+        
     }
 
     private void Shoot()
@@ -72,5 +67,15 @@ public class GelShooter : MonoBehaviour
 
             Debug.DrawRay(ray.origin,ray.direction * 100f,Color.red, 2f);
         }
+    }
+
+    private void OnEnable()
+    {
+        controls.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Player.Disable();
     }
 }

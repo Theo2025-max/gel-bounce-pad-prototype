@@ -7561,7 +7561,7 @@ MonoBehaviour:
   RotationSpeed: 0.4
   SpeedChangeRate: 10
   JumpHeight: 1.2
-  Gravity: -15
+  Gravity: -1
   JumpTimeout: 0.1
   FallTimeout: 0.15
   Grounded: 1
@@ -7573,6 +7573,9 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 4135013735362578540}
   TopClamp: 89
   BottomClamp: -89
+  MinJumpHeight: 0.5
+  MaxJumpHeight: 3
+  MaxChargeTime: 1
 --- !u!1 &8616685848795033911
 GameObject:
   m_ObjectHideFlags: 0
