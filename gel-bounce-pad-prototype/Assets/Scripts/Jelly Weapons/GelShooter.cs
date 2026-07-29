@@ -14,7 +14,7 @@ public class GelShooter : MonoBehaviour
     [Header("Animation References")]
     [SerializeField] private Animator Animator;
 
-    private GameObject currentJelly;
+    private GameObject Jelly1, Jelly2, Jelly3, Jelly4;
     PlayerControls controls;
 
     const string SHOOT_STRING = "Shoot";
@@ -50,14 +50,18 @@ public class GelShooter : MonoBehaviour
         {
             Debug.Log($"Valid Gel Surface Hit: {hit.collider.name}\n" +$"Point: {hit.point}\n" +$"Normal: {hit.normal}");
 
-            if (currentJelly != null)
+            if (Jelly4 != null)
             {
-                Destroy(currentJelly);
+                Destroy(Jelly4);
             }
 
             Quaternion rotation = Quaternion.FromToRotation(Vector3.up,hit.normal);
 
-            currentJelly = Instantiate(jellyPrefab,hit.point,rotation);
+            if (Jelly3 != null) Jelly4 = Jelly3;
+            if (Jelly2 != null) Jelly3 = Jelly2;
+            if (Jelly1 != null) Jelly2 = Jelly1;
+            
+            Jelly1 = Instantiate(jellyPrefab,hit.point,rotation);
 
             Debug.DrawLine(ray.origin,hit.point,Color.green, 2f);
         }
