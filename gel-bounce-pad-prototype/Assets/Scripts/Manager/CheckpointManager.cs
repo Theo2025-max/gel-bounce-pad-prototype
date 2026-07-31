@@ -1,10 +1,22 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class CheckpointManager : MonoBehaviour
 {
     public static CheckpointManager Instance { get; private set; }
 
     public Checkpoint CurrentCheckpoint { get; private set; }
+
+    public CinemachineCamera CurrentDeathCamera
+    {
+        get
+        {
+            if (CurrentCheckpoint == null)
+                return null;
+
+            return CurrentCheckpoint.DeathCamera;
+        }
+    }
 
     private void Awake()
     {
