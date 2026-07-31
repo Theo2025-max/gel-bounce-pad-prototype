@@ -9,15 +9,16 @@ public class GelShooter : MonoBehaviour
 
     [Header("Raycast Settings")]
     [SerializeField] private float shootDistance = Mathf.Infinity;
-    [SerializeField] private LayerMask gelSurfaceLayer;
+    [SerializeField] private LayerMask shootLayerMask;
 
     [Header("Animation References")]
-    [SerializeField] private Animator Animator;
+    [SerializeField] private Animator animator;
 
-    private GameObject Jelly1, Jelly2, Jelly3, Jelly4;
-    PlayerControls controls;
+    private GameObject jelly1, jelly2, jelly3, jelly4;
 
-    const string SHOOT_STRING = "Shoot";
+    private PlayerControls controls;
+
+    private const string SHOOT_STRING = "Shoot";
 
     private void Awake()
     {
@@ -27,49 +28,50 @@ public class GelShooter : MonoBehaviour
         {
             playerCamera = Camera.main;
         }
-        controls.Player.Shoot.performed += ctx =>
-        {
-            Shoot();
-        };
-    }
 
-    private void Update()
-    {
-        
+        controls.Player.Shoot.performed += ctx => Shoot();
     }
 
     private void Shoot()
     {
         jellyMuzzleFlash.Play();
+        animator.Play(SHOOT_STRING, 0, 0f);
 
-        Animator.Play(SHOOT_STRING, 0, 0f);
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
-       Ray ray = new Ray(playerCamera.transform.position,playerCamera.transform.forward);
-
-        if (Physics.Raycast(ray,out RaycastHit hit,shootDistance,gelSurfaceLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, shootDistance, shootLayerMask))
         {
-            Debug.Log($"Valid Gel Surface Hit: {hit.collider.name}\n" +$"Point: {hit.point}\n" +$"Normal: {hit.normal}");
+            Debug.Log($"Hit: {hit.collider.name}");
 
-            if (Jelly4 != null)
+            if (hit.collider.TryGetComponent<IGelTarget>(out IGelTarget gelTarget))
             {
-                Destroy(Jelly4);
+                gelTarget.Trap();
+
+                Debug.DrawLine(ray.origin, hit.point, Color.cyan, 2f);
+
+                return;
             }
 
-            Quaternion rotation = Quaternion.FromToRotation(Vector3.up,hit.normal);
+            if (jelly4 != null)
+            {
+                Destroy(jelly4);
+            }
 
-            if (Jelly3 != null) Jelly4 = Jelly3;
-            if (Jelly2 != null) Jelly3 = Jelly2;
-            if (Jelly1 != null) Jelly2 = Jelly1;
-            
-            Jelly1 = Instantiate(jellyPrefab,hit.point,rotation);
+            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
 
-            Debug.DrawLine(ray.origin,hit.point,Color.green, 2f);
+            if (jelly3 != null) jelly4 = jelly3;
+            if (jelly2 != null) jelly3 = jelly2;
+            if (jelly1 != null) jelly2 = jelly1;
+
+            jelly1 = Instantiate(jellyPrefab, hit.point, rotation);
+
+            Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);
         }
         else
         {
-            Debug.Log("No valid Gel Surface was hit.");
+            Debug.Log("Nothing was hit.");
 
-            Debug.DrawRay(ray.origin,ray.direction * 100f,Color.red, 2f);
+            Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 2f);
         }
     }
 
