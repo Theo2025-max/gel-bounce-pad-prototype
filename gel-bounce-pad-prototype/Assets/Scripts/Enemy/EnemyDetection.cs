@@ -25,6 +25,8 @@ public class EnemyDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Player entered detection radius.");
+
         if (hasDetectedPlayer)
             return;
 
@@ -33,13 +35,17 @@ public class EnemyDetection : MonoBehaviour
 
         hasDetectedPlayer = true;
 
-        // Begin chasing.
         enemyAI.StartChasing();
 
-        // Ask the dialogue director if this enemy is allowed to speak.
-        if (EnemyDialogueDirector.Instance != null && EnemyDialogueDirector.Instance.CanPlayDialogue())
+        if (EnemyDialogueDirector.Instance != null &&
+            EnemyDialogueDirector.Instance.CanPlayDialogue())
         {
             enemyAudio.PlayTargetConfirmed();
         }
+    }
+
+    public void ResetDetection()
+    {
+        hasDetectedPlayer = false;
     }
 }

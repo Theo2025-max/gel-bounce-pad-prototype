@@ -58,7 +58,6 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
             spawnedJelly = Instantiate(jellyPrefab,jellySpawnPoint.position,jellySpawnPoint.rotation);
         }
 
-        Debug.Log($"{name} has been trapped.");
 
         StartCoroutine(TrapLifetimeRoutine());
     }
@@ -88,7 +87,6 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
 
     private void BeginWobble()
     {
-        Debug.Log($"{name} jelly is wobbling.");
 
         if (spawnedJelly == null)
             return;
@@ -103,7 +101,6 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
 
     private void DestroyEnemy()
     {
-        Debug.Log($"{name} has dissolved.");
 
         if (spawnedJelly != null)
         {
@@ -112,8 +109,6 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
 
         if (explosionPrefab != null && jellySpawnPoint != null)
         {
-            Debug.Log("Spawning Explosion!");
-
             Instantiate(explosionPrefab,jellySpawnPoint.position,Quaternion.identity);
         }
         else

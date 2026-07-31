@@ -11,10 +11,14 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     private EnemyStateMachine stateMachine;
 
+    private Vector3 spawnPosition;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         stateMachine = GetComponent<EnemyStateMachine>();
+
+        spawnPosition = transform.position;
     }
 
     private void Start()
@@ -33,8 +37,6 @@ public class EnemyAI : MonoBehaviour
                 return;
             }
         }
-
-        Debug.Log($"Is On NavMesh: {agent.isOnNavMesh}");
     }
 
     private void Update()
@@ -44,10 +46,10 @@ public class EnemyAI : MonoBehaviour
 
         if (stateMachine.CurrentState == EnemyStateMachine.EnemyState.Chasing)
         {
-            Debug.Log("Setting Destination");
             agent.SetDestination(player.position);
         }
     }
+
     public void StartChasing()
     {
         stateMachine.SetState(EnemyStateMachine.EnemyState.Chasing);
@@ -56,5 +58,25 @@ public class EnemyAI : MonoBehaviour
     public void StopMoving()
     {
         agent.ResetPath();
+    }
+
+    public void ReturnToSpawn()
+    {
+        if (!agent.enabled)
+            return;
+
+        stateMachine.SetState(EnemyStateMachine.EnemyState.Idle);
+
+        agent.isStopped = false;
+        agent.SetDestination(spawnPosition);
+
+        EnemyDetection detection = GetComponentInChildren<EnemyDetection>();
+
+        if (detection != null)
+        {
+            detection.ResetDetection();
+        }
+
+        Debug.Log($"{name} returning to spawn.");
     }
 }
