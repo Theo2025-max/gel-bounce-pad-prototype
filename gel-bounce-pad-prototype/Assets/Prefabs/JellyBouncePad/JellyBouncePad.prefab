@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2571568817866219548}
   - component: {fileID: 4927804029335721391}
   - component: {fileID: -6527373255108270118}
+  - component: {fileID: 2957524008443434664}
   - component: {fileID: 2431431701107712298}
   m_Layer: 7
   m_Name: JellyBouncePad
@@ -141,6 +142,20 @@ MonoBehaviour:
   wobbleAngle: 8
   squashAmount: 0.08
   stretchAmount: 0.12
+--- !u!114 &2957524008443434664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807843562507017413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea04690668139444b5da733e4bc2284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growthAmount: 0.5
+  maxScale: 2.5
 --- !u!198 &2431431701107712298
 ParticleSystem:
   m_ObjectHideFlags: 0

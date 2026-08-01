@@ -52,18 +52,24 @@ public class GelShooter : MonoBehaviour
                 return;
             }
 
-            if (jelly4 != null)
+            GelBlock existingGel = hit.collider.GetComponent<GelBlock>();
+
+            if (existingGel != null)
             {
-                Destroy(jelly4);
+                // Already a gel block grow it instead of spawning a new one
+                existingGel.Grow();
             }
-
-            Quaternion rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-
-            if (jelly3 != null) jelly4 = jelly3;
-            if (jelly2 != null) jelly3 = jelly2;
-            if (jelly1 != null) jelly2 = jelly1;
-
-            jelly1 = Instantiate(jellyPrefab, hit.point, rotation);
+            else
+            {
+                if (jelly4 != null)
+                {
+                    Destroy(jelly4);
+                }
+                if (jelly3 != null) jelly4 = jelly3;
+                if (jelly2 != null) jelly3 = jelly2;
+                if (jelly1 != null) jelly2 = jelly1;
+                jelly1 = Instantiate(jellyPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.up));
+            }
 
             Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);
         }
