@@ -2233,7 +2233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508197696}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2368,7 +2368,7 @@ GameObject:
   - component: {fileID: 1775263372}
   - component: {fileID: 1775263375}
   - component: {fileID: 1775263373}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7554,7 +7554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4135013735362578539}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerCameraRoot
   m_TagString: CinemachineTarget
   m_Icon: {fileID: 0}
@@ -7682,7 +7682,7 @@ GameObject:
   - component: {fileID: 5393215578530424109}
   - component: {fileID: 5393215578530424108}
   - component: {fileID: 5393215578530424099}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8081,7 +8081,7 @@ GameObject:
   - component: {fileID: 8997996947136605074}
   - component: {fileID: 8997996947136605076}
   - component: {fileID: 8997996947136605075}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PlayerCapsule
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8149,7 +8149,7 @@ MonoBehaviour:
   shootDistance: 100
   shootLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 448
   animator: {fileID: 907881738}
 --- !u!114 &8997996947136605071
 MonoBehaviour:
@@ -8190,6 +8190,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+  padMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &8997996947136605074
 MonoBehaviour:
   m_ObjectHideFlags: 0
