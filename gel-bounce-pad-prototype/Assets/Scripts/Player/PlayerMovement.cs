@@ -23,9 +23,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public LayerMask padMask;
 
     Vector3 velocity;
-    bool isGrounded;
+    bool isGrounded, onPad;
 
     private void Awake()
     {
@@ -36,12 +37,14 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Jump.performed += ctx => jumpHeld = true;
         controls.Player.Jump.canceled += ctx => jumpHeld = false;
         groundMask = LayerMask.GetMask("GelSurface");
+        padMask = LayerMask.GetMask("GelPad");
     }
 
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        onPad = Physics.CheckSphere(groundCheck.position, groundDistance, padMask);
 
         if (isGrounded && velocity.y < 0)
         {
@@ -62,6 +65,16 @@ public class PlayerMovement : MonoBehaviour
         //check if the player is on the ground so he can jump
 
         if (isGrounded)
+        {
+            if (jumpHeld)
+            {
+                velocity.y = Mathf.Sqrt(minJumpHeight * -2f * gravity);
+
+                isCharging = false;
+                chargeTime = 0f;
+            }
+        }
+        else if(onPad)
         {
             if (jumpHeld)
             {
