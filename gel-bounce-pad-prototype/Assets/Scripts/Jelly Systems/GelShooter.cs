@@ -51,10 +51,7 @@ public class GelShooter : MonoBehaviour
 
                 return;
             }
-            
-            GelBlock existingGel = hit.collider.GetComponent<GelBlock>();
 
-<<<<<<< Updated upstream
             GelBlock existingGel = hit.collider.GetComponent<GelBlock>();
 
             if (existingGel != null)
@@ -73,46 +70,6 @@ public class GelShooter : MonoBehaviour
                 if (jelly1 != null) jelly2 = jelly1;
                 jelly1 = Instantiate(jellyPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.up));
             }
-=======
-<<<<<<< HEAD
-            if (existingGel != null)
-            {
-                // Already a gel block - grow it instead of spawning a new one
-                existingGel.Grow();
-            }
-            else
-            {
-                if (jelly4 != null)
-                {
-                    Destroy(jelly4);
-                }
-
-                if (jelly3 != null) jelly4 = jelly3;
-                if (jelly2 != null) jelly3 = jelly2;
-                if (jelly1 != null) jelly2 = jelly1;
-                jelly1 = Instantiate(jellyPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.up));
-            }
-=======
-            GelBlock existingGel = hit.collider.GetComponent<GelBlock>();
-
-            if (existingGel != null)
-            {
-                // Already a gel block grow it instead of spawning a new one
-                existingGel.Grow();
-            }
-            else
-            {
-                if (jelly4 != null)
-                {
-                    Destroy(jelly4);
-                }
-                if (jelly3 != null) jelly4 = jelly3;
-                if (jelly2 != null) jelly3 = jelly2;
-                if (jelly1 != null) jelly2 = jelly1;
-                jelly1 = Instantiate(jellyPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.up));
-            }
->>>>>>> bcd5196e0fb0a3229a0e169ac04c39d75df0dfa1
->>>>>>> Stashed changes
 
             Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);
         }
