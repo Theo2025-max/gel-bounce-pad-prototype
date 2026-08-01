@@ -14,7 +14,15 @@ GameObject:
   - component: {fileID: 2571568817866219548}
   - component: {fileID: 4927804029335721391}
   - component: {fileID: -6527373255108270118}
+<<<<<<< Updated upstream
   - component: {fileID: 2957524008443434664}
+=======
+<<<<<<< HEAD
+  - component: {fileID: -1197393223162532876}
+=======
+  - component: {fileID: 2957524008443434664}
+>>>>>>> bcd5196e0fb0a3229a0e169ac04c39d75df0dfa1
+>>>>>>> Stashed changes
   - component: {fileID: 2431431701107712298}
   m_Layer: 7
   m_Name: JellyBouncePad
@@ -142,7 +150,15 @@ MonoBehaviour:
   wobbleAngle: 8
   squashAmount: 0.08
   stretchAmount: 0.12
+<<<<<<< Updated upstream
 --- !u!114 &2957524008443434664
+=======
+<<<<<<< HEAD
+--- !u!114 &-1197393223162532876
+=======
+--- !u!114 &2957524008443434664
+>>>>>>> bcd5196e0fb0a3229a0e169ac04c39d75df0dfa1
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
