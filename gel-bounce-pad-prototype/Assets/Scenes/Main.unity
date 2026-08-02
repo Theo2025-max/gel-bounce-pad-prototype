@@ -18311,15 +18311,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.085
+      value: -0.7750001
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -296.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51997,7 +51997,7 @@ Transform:
   m_GameObject: {fileID: 6106246811249157885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.4, y: 13.085, z: -296.86}
+  m_LocalPosition: {x: 0, y: -0.7750001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52335,7 +52335,7 @@ Transform:
   m_GameObject: {fileID: 8616685848795033911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.4, y: 11.71, z: -296.86}
+  m_LocalPosition: {x: 0, y: -2.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52359,6 +52359,7 @@ MonoBehaviour:
   playerCamera: {fileID: 6106246811249157887}
   jellyPrefab: {fileID: 8807843562507017413, guid: 55bc02756527e324eb55380f62e28d82, type: 3}
   jellyMuzzleFlash: {fileID: 1151334863293693388}
+  weaponAudio: {fileID: 0}
   shootDistance: 100
   shootLayerMask:
     serializedVersion: 2
@@ -52395,7 +52396,11 @@ MonoBehaviour:
   jumpHeight: 3
   controller: {fileID: 8616685848795033917}
   minJumpHeight: 1
+  minJumpHeight2: 1.5
+  minJumpHeight3: 2
   maxJumpHeight: 5
+  maxJumpHeight2: 7
+  maxJumpHeight3: 10
   maxChargeTime: 1
   jumpHeld: 0
   groundCheck: {fileID: 1508197696}
@@ -52404,6 +52409,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   padMask:
+    serializedVersion: 2
+    m_Bits: 0
+  pad2Mask:
+    serializedVersion: 2
+    m_Bits: 0
+  pad3Mask:
     serializedVersion: 2
     m_Bits: 0
 --- !u!114 &8997996947136605074
