@@ -10,7 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
 
     public float minJumpHeight = 1f;
-    public float maxJumpHeight = 6f;
+    public float minJumpHeight2 = 1.5f;
+    public float minJumpHeight3 = 2f;
+    public float maxJumpHeight = 4f;
+    public float maxJumpHeight2 = 7f;
+    public float maxJumpHeight3 = 10f;
     public float maxChargeTime = 2f;
 
     PlayerControls controls;
@@ -23,10 +27,11 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    public LayerMask padMask;
+    public LayerMask padMask, pad2Mask, pad3Mask;
 
     Vector3 velocity;
-    bool isGrounded, onPad;
+    bool isGrounded, onPad, onPad2, onPad3;
+    GelBlock currentGelBlock;
 
     private void Awake()
     {
@@ -45,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         onPad = Physics.CheckSphere(groundCheck.position, groundDistance, padMask);
+        onPad2 = Physics.CheckSphere(groundCheck.position, groundDistance, pad2Mask);
+        onPad3 = Physics.CheckSphere(groundCheck.position, groundDistance, pad3Mask);
 
         if (isGrounded && velocity.y < 0)
         {
@@ -64,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
         //check if the player is on the ground so he can jump
 
+
         if (isGrounded)
         {
             if (jumpHeld)
@@ -74,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
                 chargeTime = 0f;
             }
         }
-        else if(onPad)
+        else if (onPad)
         {
             if (jumpHeld)
             {
@@ -88,6 +96,46 @@ public class PlayerMovement : MonoBehaviour
                 // Released - launch the jump
                 float t = chargeTime / maxChargeTime;
                 float jumpHeight = Mathf.Lerp(minJumpHeight, maxJumpHeight, t);
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+                isCharging = false;
+                chargeTime = 0f;
+            }
+        }
+        else if (onPad2)
+        {
+            if (jumpHeld)
+            {
+                // Charging up
+                isCharging = true;
+                chargeTime += Time.deltaTime;
+                chargeTime = Mathf.Min(chargeTime, maxChargeTime);
+            }
+            else if (isCharging)
+            {
+                // Released - launch the jump
+                float t = chargeTime / maxChargeTime;
+                float jumpHeight = Mathf.Lerp(minJumpHeight2, maxJumpHeight2, t);
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+                isCharging = false;
+                chargeTime = 0f;
+            }
+        }
+        else if (onPad3)
+        {
+            if (jumpHeld)
+            {
+                // Charging up
+                isCharging = true;
+                chargeTime += Time.deltaTime;
+                chargeTime = Mathf.Min(chargeTime, maxChargeTime);
+            }
+            else if (isCharging)
+            {
+                // Released - launch the jump
+                float t = chargeTime / maxChargeTime;
+                float jumpHeight = Mathf.Lerp(minJumpHeight3, maxJumpHeight3, t);
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
                 isCharging = false;
