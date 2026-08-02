@@ -6,6 +6,7 @@ public class GelShooter : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private GameObject jellyPrefab;
     [SerializeField] private ParticleSystem jellyMuzzleFlash;
+    [SerializeField] private WeaponAudio weaponAudio;
 
     [Header("Raycast Settings")]
     [SerializeField] private float shootDistance = Mathf.Infinity;
@@ -29,11 +30,21 @@ public class GelShooter : MonoBehaviour
             playerCamera = Camera.main;
         }
 
+        // Automatically find the WeaponAudio component if it wasn't assigned.
+        if (weaponAudio == null)
+        {
+            weaponAudio = GetComponent<WeaponAudio>();
+        }
+
         controls.Player.Shoot.performed += ctx => Shoot();
     }
 
     private void Shoot()
     {
+        // Play the weapon firing sound.
+        weaponAudio?.PlayShoot();
+
+        // Play visual effects.
         jellyMuzzleFlash.Play();
         animator.Play(SHOOT_STRING, 0, 0f);
 
@@ -56,7 +67,7 @@ public class GelShooter : MonoBehaviour
 
             if (existingGel != null)
             {
-                // Already a gel block grow it instead of spawning a new one
+                // Already a gel block—grow it instead of spawning a new one.
                 existingGel.Grow();
             }
             else
@@ -65,10 +76,12 @@ public class GelShooter : MonoBehaviour
                 {
                     Destroy(jelly4);
                 }
+
                 if (jelly3 != null) jelly4 = jelly3;
                 if (jelly2 != null) jelly3 = jelly2;
                 if (jelly1 != null) jelly2 = jelly1;
-                jelly1 = Instantiate(jellyPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, Vector3.up));
+
+                jelly1 = Instantiate(jellyPrefab,hit.point,Quaternion.FromToRotation(Vector3.up, Vector3.up));
             }
 
             Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);

@@ -40320,7 +40320,7 @@ PrefabInstance:
       objectReference: {fileID: 8997996947136605069}
     - target: {fileID: 7434448594752351786, guid: ae0a0abf117455d4f96c3f4e47002c2c, type: 3}
       propertyPath: m_Name
-      value: Enemy 1
+      value: Enemy (01)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40877,6 +40877,7 @@ GameObject:
   - component: {fileID: 8997996947136605070}
   - component: {fileID: 8997996947136605072}
   - component: {fileID: 8997996947136605071}
+  - component: {fileID: 8997996947136605077}
   - component: {fileID: 8997996947136605074}
   - component: {fileID: 8997996947136605076}
   - component: {fileID: 8997996947136605075}
@@ -40945,6 +40946,7 @@ MonoBehaviour:
   playerCamera: {fileID: 6106246811249157887}
   jellyPrefab: {fileID: 8807843562507017413, guid: 55bc02756527e324eb55380f62e28d82, type: 3}
   jellyMuzzleFlash: {fileID: 1151334863293693388}
+  weaponAudio: {fileID: 8997996947136605077}
   shootDistance: 100
   shootLayerMask:
     serializedVersion: 2
@@ -41117,6 +41119,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathGruntClip: {fileID: 8300000, guid: 4f301b6a262a949a884cf7ec822110d7, type: 3}
+--- !u!114 &8997996947136605077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848795033911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35da4b367946c7428638b69f3131151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootClip: {fileID: 8300000, guid: 521d15c55544c7141bf985cf103baeb6, type: 3}
+  minPitch: 0.97
+  maxPitch: 1.03
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
