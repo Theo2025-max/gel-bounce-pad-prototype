@@ -27,7 +27,7 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
     private NavMeshAgent agent;
     private EnemyAudio enemyAudio;
 
-    private bool isTrapped = false;
+    public bool isTrapped = false;
     private GameObject spawnedJelly;
 
     private void Awake()

@@ -5,13 +5,16 @@ public class EnemyDetection : MonoBehaviour
     [Header("References")]
     [SerializeField] private EnemyAI enemyAI;
     [SerializeField] private EnemyAudio enemyAudio;
+    [SerializeField] private EnemyTrap trap;
 
     private bool hasDetectedPlayer = false;
 
     private void Reset()
     {
+
         enemyAI = GetComponentInParent<EnemyAI>();
         enemyAudio = GetComponentInParent<EnemyAudio>();
+        trap = GetComponentInParent<EnemyTrap>();
     }
 
     private void Awake()
@@ -38,7 +41,7 @@ public class EnemyDetection : MonoBehaviour
         enemyAI.StartChasing();
 
         if (EnemyDialogueDirector.Instance != null &&
-            EnemyDialogueDirector.Instance.CanPlayDialogue())
+            EnemyDialogueDirector.Instance.CanPlayDialogue() && !trap.isTrapped)
         {
             enemyAudio.PlayTargetConfirmed();
         }
