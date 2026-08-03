@@ -180570,7 +180570,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 511
+    m_Bits: 3583
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -180863,7 +180863,7 @@ MonoBehaviour:
   shootDistance: 100
   shootLayerMask:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 3520
   animator: {fileID: 907881738}
 --- !u!114 &8997996947136605071
 MonoBehaviour:
@@ -180910,13 +180910,13 @@ MonoBehaviour:
     m_Bits: 256
   padMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   pad2Mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   pad3Mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
 --- !u!114 &8997996947136605074
 MonoBehaviour:
   m_ObjectHideFlags: 0
