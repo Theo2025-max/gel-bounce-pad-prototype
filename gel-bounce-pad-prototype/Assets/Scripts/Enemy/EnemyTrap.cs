@@ -27,7 +27,7 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
     private NavMeshAgent agent;
     private EnemyAudio enemyAudio;
 
-    public bool isTrapped = false;
+    private bool isTrapped = false;
     private GameObject spawnedJelly;
 
     private void Awake()
@@ -58,6 +58,7 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
             spawnedJelly = Instantiate(jellyPrefab,jellySpawnPoint.position,jellySpawnPoint.rotation);
         }
 
+
         StartCoroutine(TrapLifetimeRoutine());
     }
 
@@ -84,7 +85,7 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
         DestroyEnemy();
     }
 
-    public void BeginWobble()
+    private void BeginWobble()
     {
 
         if (spawnedJelly == null)
@@ -94,7 +95,7 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
 
         if (wobble != null)
         {
-            wobble.StartWobble(2f);
+            wobble.StartWobble();
         }
     }
 

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.Rendering;
+﻿using UnityEngine;
 
 public class GelShooter : MonoBehaviour
 {
@@ -9,7 +7,6 @@ public class GelShooter : MonoBehaviour
     [SerializeField] private GameObject jellyPrefab;
     [SerializeField] private ParticleSystem jellyMuzzleFlash;
     [SerializeField] private WeaponAudio weaponAudio;
-    [SerializeField] private GameObject explosionPrefab;
 
     [Header("Raycast Settings")]
     [SerializeField] private float shootDistance = Mathf.Infinity;
@@ -19,7 +16,6 @@ public class GelShooter : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private GameObject jelly1, jelly2, jelly3, jelly4;
-    
 
     private PlayerControls controls;
 
@@ -76,13 +72,16 @@ public class GelShooter : MonoBehaviour
             }
             else
             {
-                if (jelly4 != null) Destroy(jelly4);
+                if (jelly4 != null)
+                {
+                    Destroy(jelly4);
+                }
+
                 if (jelly3 != null) jelly4 = jelly3;
                 if (jelly2 != null) jelly3 = jelly2;
                 if (jelly1 != null) jelly2 = jelly1;
 
                 jelly1 = Instantiate(jellyPrefab,hit.point,Quaternion.FromToRotation(Vector3.up, Vector3.up));
-                StartCoroutine(LifetimeRoutine(jelly1, hit.point));
             }
 
             Debug.DrawLine(ray.origin, hit.point, Color.green, 2f);
@@ -92,33 +91,6 @@ public class GelShooter : MonoBehaviour
             Debug.Log("Nothing was hit.");
 
             Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 2f);
-        }
-    }
-
-    private IEnumerator LifetimeRoutine(GameObject jelly, Vector3 jellySpawnPoint)
-    {
-        yield return new WaitForSeconds(10f);
-        if (jelly != null) BeginWobble(jelly);
-
-        yield return new WaitForSeconds(5f);
-        if (jelly != null) Destroy(jelly);
-        if (explosionPrefab != null && jellySpawnPoint != null)
-        {
-            Instantiate(explosionPrefab, jellySpawnPoint, Quaternion.identity);
-        }
-    }
-
-    public void BeginWobble(GameObject spawnedJelly)
-    {
-
-        if (spawnedJelly == null)
-            return;
-
-        JellyWobble wobble = spawnedJelly.GetComponent<JellyWobble>();
-
-        if (wobble != null)
-        {
-            wobble.StartWobble(5f);
         }
     }
 

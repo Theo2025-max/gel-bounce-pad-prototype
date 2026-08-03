@@ -4,7 +4,7 @@ using UnityEngine;
 public class JellyWobble : MonoBehaviour
 {
     [Header("Timing")]
-    //[SerializeField] private float wobbleDuration = 2f;
+    [SerializeField] private float wobbleDuration = 2f;
 
     [Header("Rotation")]
     [SerializeField] private float wobbleSpeed = 16f;
@@ -23,12 +23,12 @@ public class JellyWobble : MonoBehaviour
         startScale = transform.localScale;
     }
 
-    public void StartWobble(float wobbleDuration)
+    public void StartWobble()
     {
-        StartCoroutine(WobbleRoutine(wobbleDuration));
+        StartCoroutine(WobbleRoutine());
     }
 
-    private IEnumerator WobbleRoutine(float wobbleDuration)
+    private IEnumerator WobbleRoutine()
     {
         float timer = 0f;
 
