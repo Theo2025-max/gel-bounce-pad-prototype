@@ -9,6 +9,8 @@ public class EnemyAttack : MonoBehaviour
         trap = GetComponentInParent<EnemyTrap>();
     }
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player") || trap.isTrapped)
