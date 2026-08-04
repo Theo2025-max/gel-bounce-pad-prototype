@@ -76,7 +76,14 @@ public class GelShooter : MonoBehaviour
             }
             else
             {
-                if (jelly4 != null) Destroy(jelly4);
+                if (jelly4 != null)
+                {
+                    Destroy(jelly4);
+                    if (explosionPrefab != null && hit.point != null)
+                    {
+                        Instantiate(explosionPrefab, jelly4.transform.position, Quaternion.identity);
+                    }
+                }
                 if (jelly3 != null) jelly4 = jelly3;
                 if (jelly2 != null) jelly3 = jelly2;
                 if (jelly1 != null) jelly2 = jelly1;
@@ -102,7 +109,7 @@ public class GelShooter : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
         if (jelly != null) Destroy(jelly);
-        if (explosionPrefab != null && jellySpawnPoint != null)
+        if (jelly != null && explosionPrefab != null && jellySpawnPoint != null)
         {
             Instantiate(explosionPrefab, jellySpawnPoint, Quaternion.identity);
         }
