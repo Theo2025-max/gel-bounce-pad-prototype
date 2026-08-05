@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask padMask, pad2Mask, pad3Mask;
 
+    public GameObject winScreen;
     Vector3 velocity;
     bool isGrounded, onPad, onPad2, onPad3;
     GelBlock currentGelBlock;
@@ -152,6 +153,10 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "winBlock") winScreen.SetActive(true);
+    }
     private void OnEnable()
     {
         controls.Player.Enable();

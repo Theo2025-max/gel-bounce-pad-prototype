@@ -7,6 +7,8 @@ TagManager:
   - Projectile
   - CinemachineTarget
   - Moving
+  - LastEnemy
+  - winBlock
   layers:
   - Default
   - TransparentFX
