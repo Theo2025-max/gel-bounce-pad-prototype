@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 8
+  m_Radius: 25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5862476438028569996
 MonoBehaviour:
@@ -67,7 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAI: {fileID: 6954990054688779501}
-  enemyAudio: {fileID: 0}
+  enemyAudio: {fileID: 7178193724439099315}
+  trap: {fileID: 2428985608579316480}
 --- !u!1 &2068232630858015437
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +352,7 @@ MonoBehaviour:
   wobbleDuration: 2
   warningDelay: 1.5
   explosionPrefab: {fileID: 8132443917976871448, guid: 6f264e712f40d144c8e0a808a263b6b3, type: 3}
+  isTrapped: 0
 --- !u!114 &7178193724439099315
 MonoBehaviour:
   m_ObjectHideFlags: 0
