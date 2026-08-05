@@ -26,7 +26,6 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
     private EnemyAI enemyAI;
     private NavMeshAgent agent;
     private EnemyAudio enemyAudio;
-    private GameObject enemy; 
     public WinConditionManager win;
 
     public bool isTrapped = false;
@@ -38,7 +37,6 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
         enemyAI = GetComponent<EnemyAI>();
         agent = GetComponent<NavMeshAgent>();
         enemyAudio = GetComponent<EnemyAudio>();
-        enemy = GetComponent<GameObject>();
     }
 
     public void Trap()
@@ -50,7 +48,6 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
 
         stateMachine.SetState(EnemyStateMachine.EnemyState.Trapped);
 
-        if (enemy.tag == "LastEnemy") win.RegisterEnemyDeath(enemy);
         agent.isStopped = true;
         agent.ResetPath();
         agent.enabled = false;
@@ -107,8 +104,8 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
 
         if (spawnedJelly != null)
         {
+            if (gameObject != null && gameObject.tag == "LastEnemy") win.RegisterEnemyDeath(gameObject);
             Destroy(spawnedJelly);
-            
         }
 
         if (explosionPrefab != null && jellySpawnPoint != null)

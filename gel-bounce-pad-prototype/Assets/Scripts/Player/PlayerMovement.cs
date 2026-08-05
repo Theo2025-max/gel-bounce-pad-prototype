@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "winBlock") winScreen.SetActive(true);
+        if (collision.gameObject.CompareTag("winBlock")) winScreen.SetActive(true);
     }
     private void OnEnable()
     {

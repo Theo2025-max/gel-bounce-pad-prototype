@@ -6,7 +6,7 @@ public class WinConditionManager : MonoBehaviour
     public static WinConditionManager Instance { get; private set; }
 
     [SerializeField] private List<GameObject> activeEnemies = new List<GameObject>();
-    [SerializeField] private GameObject winBlock;
+    [SerializeField] private GameObject winScreen;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class WinConditionManager : MonoBehaviour
     {
         if (activeEnemies.Count == 0)
         {
-            winBlock.SetActive(true);
+            winScreen.SetActive(true);
         }
     }
 }
