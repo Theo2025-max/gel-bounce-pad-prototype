@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 25
+  m_Radius: 28
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5862476438028569996
 MonoBehaviour:
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 2950428747072394933}
   m_Layer: 6
   m_Name: Enemy 1
-  m_TagString: LastEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +251,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4.2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
