@@ -113,6 +113,10 @@ public class PlayerDeath : MonoBehaviour
         RestorePlayerCamera();
 
         characterController.enabled = true;
+
+        // Clears any stored movement after respawning.
+        characterController.Move(Vector3.zero);
+
         playerMovement.enabled = true;
         mouseMovement.enabled = true;
 

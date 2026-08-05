@@ -13,7 +13,7 @@ public class EnemyTrap : MonoBehaviour, IGelTarget
     [SerializeField] private GameObject jellyPrefab;
 
     [Header("Lifetime")]
-    [SerializeField] private float trapDuration = 8f;
+    [SerializeField] private float trapDuration = 6f;
     [SerializeField] private float wobbleDuration = 2f;
 
     [Tooltip("Delay after the warning voice line before the wobble begins.")]

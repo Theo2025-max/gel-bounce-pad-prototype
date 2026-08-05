@@ -104,10 +104,10 @@ public class GelShooter : MonoBehaviour
 
     private IEnumerator LifetimeRoutine(GameObject jelly, Vector3 jellySpawnPoint)
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         if (jelly != null) BeginWobble(jelly);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.5f);
         if (jelly != null) Destroy(jelly);
         if (jelly != null && explosionPrefab != null && jellySpawnPoint != null)
         {
