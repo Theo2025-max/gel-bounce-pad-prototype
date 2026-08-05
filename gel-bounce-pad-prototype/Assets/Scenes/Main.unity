@@ -205762,7 +205762,6 @@ GameObject:
   - component: {fileID: 8997996947136605076}
   - component: {fileID: 8997996947136605077}
   - component: {fileID: 8997996947136605075}
-  - component: {fileID: 8997996947136605078}
   m_Layer: 3
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -206028,29 +206027,6 @@ MonoBehaviour:
   shootClip: {fileID: 8300000, guid: 521d15c55544c7141bf985cf103baeb6, type: 3}
   minPitch: 0.97
   maxPitch: 1.03
---- !u!136 &8997996947136605078
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8616685848795033911}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.56
-  m_Height: 2.41
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.88, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
